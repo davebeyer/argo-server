@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SERVER=elena-server
+
+# Determine the base server directory
+BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ".." && pwd )
+
+STARTER=${BASE_DIR}/${SERVER}.js
+LOG_FILE=${BASE_DIR}/log/${SERVER}.log
+
+DT=`date`
+echo "===== Starting ${SERVER} at ${DT} =====" >> ${LOG_FILE}
+
+$(which node) ${STARTER} >>  ${LOG_FILE}  &
+
+
+sleep 3
+
+echo ""
+echo "Last 10 lines from log file:"
+echo ""
+tail -10 ${LOG_FILE} 
+

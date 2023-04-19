@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SERVER=elena-server
+
+# Determine the base server directory
+BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ".." && pwd )
+
+LOG_FILE=${BASE_DIR}/log/${SERVER}.log
+
+DT=`date`
+echo "----- Stopping ${SERVER} at ${DT} -----" >> ${LOG_FILE}
+echo "" >> ${LOG_FILE}
+
+sudo pkill -f "${SERVER}/${SERVER}.js"   2> /dev/null
