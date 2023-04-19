@@ -43,7 +43,9 @@ const updateDDNS = async () => {
     }
 };
 
-updateDDNS(); // no need to wait
+if (false) {
+   updateDDNS(); // no need to wait
+}
 
 
 //////////////////////////////////////////////////////
