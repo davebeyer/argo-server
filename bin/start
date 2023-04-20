@@ -13,7 +13,7 @@ echo "" >> ${LOG_FILE}
 echo "===== Starting ${SERVER} at ${DT} =====" >> ${LOG_FILE}
 echo "" >> ${LOG_FILE}
 
-$(which node) ${STARTER} >>  ${LOG_FILE}  &
+$(which node) ${STARTER} >>  ${LOG_FILE}  2>&1  &
 
 
 sleep 3
