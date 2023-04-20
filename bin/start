@@ -9,14 +9,15 @@ STARTER=${BASE_DIR}/${SERVER}.js
 LOG_FILE=${BASE_DIR}/log/${SERVER}.log
 
 DT=`date`
+echo "" >> ${LOG_FILE}
 echo "===== Starting ${SERVER} at ${DT} =====" >> ${LOG_FILE}
+echo "" >> ${LOG_FILE}
 
 $(which node) ${STARTER} >>  ${LOG_FILE}  &
 
 
 sleep 3
 
-echo ""
 echo "Last 10 lines from log file:"
 echo ""
 tail -10 ${LOG_FILE} 
