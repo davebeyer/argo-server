@@ -82,5 +82,5 @@ app.get('/', (req:any, res:any) => {
 });
 
 app.listen(port, () => {
-  console.log(`Elena server listening on port ${port}`)
+  console.log(`Argo server listening on port ${port}`)
 });

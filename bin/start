@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SERVER=elena-server
+SERVER=argo-server
 
 # Determine the base server directory
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ".." && pwd )
