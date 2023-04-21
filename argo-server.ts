@@ -15,7 +15,12 @@ const app = express()
 const port = 80
 
 // logging
-app.use(morgan('combined'));
+app.use(morgan('combined', {
+    skip: (req:any, res:any) => {
+    	return req.originalUrl.startsWith('/nm/') ||
+	       req.originalUrl.startsWith('/assets/');
+    }
+}));
 
 //
 // Routes for this site
