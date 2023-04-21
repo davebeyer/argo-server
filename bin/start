@@ -8,9 +8,10 @@ BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ".." && pwd )
 STARTER=${BASE_DIR}/${SERVER}.js
 LOG_FILE=${BASE_DIR}/log/${SERVER}.log
 
+WHO=`whoami`
 DT=`date`
 echo "" >> ${LOG_FILE}
-echo "===== Starting ${SERVER} at ${DT} =====" >> ${LOG_FILE}
+echo "===== ${WHO} Starting ${SERVER} at ${DT} =====" >> ${LOG_FILE}
 echo "" >> ${LOG_FILE}
 
 $(which node) ${STARTER} >>  ${LOG_FILE}  2>&1  &

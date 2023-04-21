@@ -7,9 +7,10 @@ BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ".." && pwd )
 
 LOG_FILE=${BASE_DIR}/log/${SERVER}.log
 
+WHO=`whoami`
 DT=`date`
 echo ""  >> ${LOG_FILE}
-echo "----- Stopping ${SERVER} at ${DT} -----" >> ${LOG_FILE}
+echo "----- ${WHO} Stopping ${SERVER} at ${DT} -----" >> ${LOG_FILE}
 echo "" >> ${LOG_FILE}
 
 sudo pkill -f "${SERVER}/${SERVER}.js"   2> /dev/null
