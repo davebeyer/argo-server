@@ -1,0 +1,15 @@
+h5 {
+  margin-top: 10px;
+}
+
+.card-title {
+  margin-top: 10px;
+}
+
+.card-img-top {
+  height: 250px;
+  width: 100%;
+  object-fit: contain;
+}
+
+/*# sourceMappingURL=styles.css.map */

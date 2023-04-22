@@ -1,6 +1,8 @@
 const axios = require('axios');
 const xmlFormat = require('xml-formatter');
 const morgan = require('morgan');
+const nunjucks = require('nunjucks');
+const moment = require('moment-timezone');
 
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
@@ -13,6 +15,16 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express()
 const port = 80
+
+//
+// Hook up nunjucks for rendering templates
+//
+
+// Base directory for HTML templates (such as index.html) is in the 'templates' sub-folder
+nunjucks.configure('templates', {
+    autoescape: true,
+    express: app
+});
 
 // logging
 app.use(morgan('combined', {
@@ -44,7 +56,9 @@ app.use('/post', createProxyMiddleware({
 
 
 app.get('/', (req:any, res:any) => {
-  res.sendFile('./templates/index.html', { root: __dirname });
+  res.render('index.html', {
+      currentDatetime : moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
+  });
 });
 
     

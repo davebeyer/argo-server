@@ -5,7 +5,9 @@
   "main": "argo-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "build:css": "sass assets/css",
+    "build:js": "tsc",
+    "build": "npm run build:js; npm run build:css",
     "restart": "./bin/restart"
   },
   "repository": {
@@ -30,7 +32,10 @@
     "express-subdomain": "^1.0.5",
     "http-proxy-middleware": "^2.0.6",
     "jquery": "^3.6.4",
+    "moment-timezone": "^0.5.43",
     "morgan": "^1.10.0",
+    "nunjucks": "^3.2.4",
+    "sass": "^1.62.0",
     "xml-formatter": "^3.3.2"
   }
 }
