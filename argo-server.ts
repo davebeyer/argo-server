@@ -1,3 +1,4 @@
+const path = require('path');
 const axios = require('axios');
 const xmlFormat = require('xml-formatter');
 const morgan = require('morgan');
@@ -21,7 +22,7 @@ const port = 80
 //
 
 // Base directory for HTML templates (such as index.html) is in the 'templates' sub-folder
-nunjucks.configure('templates', {
+nunjucks.configure(path.join(__dirname, 'templates'), {
     autoescape: true,
     express: app
 });
@@ -39,10 +40,10 @@ app.use(morgan('combined', {
 //
 
 // Static node_modules routes
-app.use('/nm', express.static('node_modules'))
+app.use('/nm', express.static(path.join(__dirname, 'node_modules')));
 
 // Static node_modules routes
-app.use('/assets', express.static('assets'))
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.use('/post', createProxyMiddleware({
   target: 'http://127.0.0.1:4567',
