@@ -45,14 +45,20 @@ app.use('/nm', express.static(path.join(__dirname, 'node_modules')));
 // Static node_modules routes
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-app.use('/post', createProxyMiddleware({
+app.use('/playapost', (req:any, res:any, next:any) => {
+  console.log("/playapost request received " + req.originalUrl);
+  next();
+});
+
+app.use('/playapost', createProxyMiddleware({
   target: 'http://127.0.0.1:4567',
   changeOrigin: true,
-  ws: true,
+  ws: true
+  // logLevel : "debug"
   
   // comment out path rewrite, nodebb expects the /post due
   // to canonical url setting apparently
-  // pathRewrite: { '^/post': '' }
+  // pathRewrite: { '^/playapost': '' }
 }));
 
 
